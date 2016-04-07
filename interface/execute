@@ -1,0 +1,13 @@
+#!/bin/sh
+# replace cmd1 for the command to execute
+
+host=localhost
+port=10011
+command=$1
+echo ${command}
+( echo open ${host} ${port}
+sleep 1
+echo ${command}
+sleep 2
+echo "3"
+ ) | telnet

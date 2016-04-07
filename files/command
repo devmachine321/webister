@@ -1,0 +1,12 @@
+#!/bin/bash
+#title           :command
+#description     :This script will connect to the servers command line interface
+#author		       :dodiaraculus17
+#date            :20161101
+#version         :0.1    
+#usage		       :webister
+#notes           :
+#bash_version    :4.1.5(1)-release
+#==============================================================================
+
+  telnet localhost 10011
