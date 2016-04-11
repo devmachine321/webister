@@ -148,6 +148,7 @@ echo "You are using a total of " . bcdiv(GetDirectorySize("/var/webister/" . $my
     <span class="sr-only">100% Complete</span>
   </div>
 </div>
+<?php } ?>
 Hostname: <span class="badge"><?php echo gethostname(); ?>:<?php
 $con = mysqli_connect($host, $user, $pass, $data);
 $sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
@@ -164,6 +165,7 @@ $sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
 $result = mysqli_query($con, $sql);
  while ($row = mysqli_fetch_row($result)) {
      echo $row[5];
+     $mm = $row[5];
  }
    mysqli_free_result($result);
     mysqli_close($con);
@@ -177,9 +179,33 @@ $result = mysqli_query($con, $sql);
  }
    mysqli_free_result($result);
     mysqli_close($con);
-    ?></span>
+    ?></span><Br>
+      MySQL Hostname: <span class="badge">localhost</span><br>
+      MySQL Username: <span class="badge"><?php echo $_SESSION["user"]; ?></span><Br>
+      MySQL Password: <span class="badge">Same as CP</span><br>
+      Database: <span class="badge"><?php echo $_SESSION["user"]; ?></span>
+      <br><span class="badge">
+       <?php
+     function Connect($port) {
+        $serverConn = @stream_socket_client("tcp://127.0.0.1:$port", $errno, $errstr);
+        if ($errstr != '') {
+            return false;
+        }
+       fclose($serverConn);
+       return true;
+      } 
 
-										<?php } ?>
+
+
+     if (Connect($mm)){
+         echo "Server is running!";
+       }else{
+         echo "Server is down";
+       
+    }
+    ?> </span>
+
+										
 										</div>
 										
 										</div>
@@ -218,6 +244,7 @@ if ($result=mysqli_query($con,$sql))
     }
   }
     ?>
+  
 											</tbody>
 										</table>
 									</div>

@@ -35,7 +35,7 @@ time TEXT
 $conn->query($sql);
 
 
-$sql = "INSERT INTO Users (id, username, password, bandwidth, diskspace, port) VALUES ('1', 'admin', '" . sha1("admin") . "', '', '', '8080')";
+$sql = "INSERT INTO Users (id, username, password, bandwidth, diskspace, port) VALUES ('2', 'josh', '" . sha1("josh") . "', '', '', '52312')";
 $conn->query($sql);
 $sql = "INSERT INTO Settings (id, code, value) VALUES ('1', 'title', 'My Web Host')";
 $conn->query($sql);

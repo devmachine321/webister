@@ -70,7 +70,7 @@ mysqli_close($con);
 		<span class="menu-btn"><i class="fa fa-bars"></i></span>
 		<ul class="ts-profile-nav">
 			<?php
-			if (empty($_SERVER['HTTPS'])) {
+			if (empty($_SESSION["user"])) {
 				?>
 			<li style="background-color:red;"><a href=""><i class="fa fa-unlock"></i> UnSecure</a></li>
 			<?php } else { ?>
@@ -96,7 +96,7 @@ mysqli_close($con);
 				<li><a href="#"><i class="fa fa-server"></i> Servers</a>
 					<ul>
 						<li><a href="panels.html">New</a></li>
-						<li><a href="buttons.html">List</a></li>
+						<li><a href="index.php?page=list#">List</a></li>
 						<li><a href="notifications.html">Delete</a></li>
 					</ul>
 				</li>
@@ -107,7 +107,7 @@ mysqli_close($con);
 	<li class="ts-label"><?php echo $_SESSION["user"]; ?>'s settings</li>
 		<li><a href="#"><i class="fa fa-server"></i> My Server</a>
 					<ul>
-						<li><a href="panels.html">File Manager</a></li>
+						<li><a href="FileManager.php">File Manager</a></li>
 						<li><a href="adminer-4.2.4.php?server=localhost&username=<?php echo $_SESSION["user"]; ?>&db=<?php echo $_SESSION["user"]; ?>">MySQL</a></li>
 						<li><a href="notifications.html">Delete</a></li>
 					</ul>
