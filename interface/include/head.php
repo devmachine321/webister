@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["user"])) {
-	header("Location: https://ddflare-dodiaraculus.c9users.io:8081/index.php?page=main");
+	header("Location: index.php?page=main");
 	die();
 }
 ?>
