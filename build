@@ -39,7 +39,7 @@ else
     echo "Exit code of $?, failure!!"
     exit 1
 fi
-mysql_secure_installation
+
 echo "Enter the password again please:"
 
 read PASS;
