@@ -4,7 +4,7 @@ webister is a python, php, c++, and more project.
 =======
 # Webister
 View the project page by [clicking here](http://alwaysontop617.github.io/webister).
-![cpanel](https://raw.githubusercontent.com/alwaysontop617/webister/master/screenshots/cpanel.png)
+
 ## About Webister
 
   - Free
@@ -36,3 +36,11 @@ Thank you for deciding to choose Webister. Feel free to leave issues and make pu
 ## Sponsor
 
 This project is sponsored by [Gsoft](http://gsoft.cu.cc/).
+
+## Screenshots
+
+![cpanel](https://raw.githubusercontent.com/alwaysontop617/webister/master/screenshots/login.png)
+![cpanel](https://raw.githubusercontent.com/alwaysontop617/webister/master/screenshots/cpanel.png)
+![cpanel](https://raw.githubusercontent.com/alwaysontop617/webister/master/screenshots/database.png)
+![cpanel](https://raw.githubusercontent.com/alwaysontop617/webister/master/screenshots/fileman.png)
+![cpanel](https://raw.githubusercontent.com/alwaysontop617/webister/master/screenshots/website.png)
