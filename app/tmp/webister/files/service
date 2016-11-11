@@ -1,0 +1,66 @@
+#!/bin/bash
+#title           :service
+#description     :This script will start the server
+#author		       :dodiaraculus17
+#date            :20161101
+#version         :0.1    
+#usage		       :service webister
+#notes           :
+#bash_version    :4.1.5(1)-release
+#==============================================================================
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root! Please contact Tecflare, if you are experiencing errors." 1>&2
+   exit 1
+fi
+case "$1" in
+  start)
+    # Start daemons.
+
+    echo -n $"Starting webister daemon: "
+
+    echo
+    su webister -c "cd /var/webister/interface && sudo php -S 0.0.0.0:8081 &>/dev/null &"
+    #development purpose only
+    #su webister -c "cd /home/ubuntu/workspace/interface && sudo php -S 0.0.0.0:8081 &>/dev/null &"
+    #end dev purpose only
+    su webister -c "python /var/webister/server.py &>/dev/null &"
+    echo 
+    #service mysql start No need
+    mysql --batch --raw -u root -ptest -hlocalhost -Dwebister -e'SELECT port FROM `Users`' | while read MM; do
+    fgd="port"
+    if [ "$MM" != "$fgd" ]; then
+    a='cd /var/webister/';
+    aq=' && php -S 0.0.0.0:';
+    b="$MM"
+    if [ ! -d /var/webister/$MM ]; then
+    echo "$MM did not exist so creating it"
+  mkdir -p /var/webister/$MM;
+fi
+    c=' &>/dev/null & '
+    cc=$a$b$aq$b$c
+    su webister -c "$cc"
+    fi
+    done
+    ;;
+
+  stop)
+    # Stop daemons.
+    echo -n $"Shutting down webister "
+    pkill -u webister
+    #service mysql stop No need
+    echo
+
+    # Do clean-up works here like removing pid files from /var/run, etc.
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+
+  *)
+    echo $"Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit 0
+//Done

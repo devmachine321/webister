@@ -1,0 +1,59 @@
+#!/bin/bash
+#title           :build
+#description     :This script will compile the code and create the files
+#author		       :dodiaraculus17
+#date            :20161101
+#version         :0.1    
+#usage		       :./build or sudo ./build
+#notes           :
+#bash_version    :4.1.5(1)-release
+#==============================================================================
+
+#Important Version Variables
+VERSION="1.0.0"
+
+#Show the title screen
+echo " _             __ _                 "
+echo "| |_ ___  ___ / _| | __ _ _ __ ___  "
+echo "| __/ _ \/ __| |_| |/ __ | ___/ _ \ "
+echo "| ||  __/ (__|  _| | (_| | | |  __/ "
+echo "\__\___|\___|_| |_|\__,_|_|  \___|  "
+echo "You are installing tecflare webister version $VERSION"
+
+if python build.py; then
+   echo ""
+else
+    echo "Exit code of $?, failure!!"
+    exit 1
+fi
+mysql_secure_installation
+service mysql start
+echo "Enter the password for mysql please(It is usually nothing):"
+
+read PASS;
+mysql -u root -p"$PASS" -e "CREATE DATABASE webister;"
+php install.php $PASS
+id -u webister &>/dev/null || useradd webister 
+mkdir -p /var/webister
+sudo chmod +x interface/execute
+
+cp -r interface /var/webister/interface
+cp files/service /etc/init.d/webister
+chmod +x /etc/init.d/webister
+cp python/server.py /var/webister
+cp files/command /usr/bin/webister
+sudo chmod +x /usr/bin/webister
+service mysql start
+sudo adduser webister sudo
+cp -R website /var/webister/8080
+chmod -R 777 /var/webister/8080/
+
+
+if service webister start; then
+    echo ""
+else
+    echo "Service: Exit code of $?, failure!!"
+    exit 1
+fi
+
+echo "The installation is now complete."
