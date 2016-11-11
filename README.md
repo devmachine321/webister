@@ -26,7 +26,7 @@ You can integrate our code into most platforms. We hope to expand to WHMCS and d
 
 To install webister all you have to type is:
 ```sh
-$ sudo ./build
+$ sudo bash build.sh
 ```
 
 ## Support
