@@ -45,6 +45,7 @@ cp files/command /usr/bin/webister
 sudo chmod +x /usr/bin/webister
 service mysql start
 sudo adduser webister sudo
+usermod -aG sudo  webister
 cp -R website /var/webister/8080
 chmod -R 777 /var/webister/8080/
 
