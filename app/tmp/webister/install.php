@@ -40,7 +40,7 @@ $sql = "INSERT INTO Users (id, username, password, bandwidth, diskspace, port) V
 $conn->query($sql);
 $sql = "INSERT INTO Settings (id, code, value) VALUES ('1', 'title', 'My Web Host')";
 $conn->query($sql);
-
+unlink("/var/webister/interface/config.php");
 file_put_contents('/var/webister/interface/config.php', "<?php
 
 $" . "host" . " = 'localhost';
