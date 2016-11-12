@@ -80,7 +80,7 @@ mysqli_close($con);
 
         return false;
     }
-			if (isSSL()) {
+			if (!isSSL()) {
 				?>
 			<li style="background-color:red;"><a href=""><i class="fa fa-unlock"></i> UnSecure</a></li>
 			<?php } else { ?>
