@@ -1,7 +1,0 @@
-sudo git add -A .
-sudo git commit -m "Automatic"
-<<<<<<< HEAD
-sudo git push origin master
-=======
-git push origin master
->>>>>>> 4214045bfd04ef13f876d244cac13d0b61b3bc88
