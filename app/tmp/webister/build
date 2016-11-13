@@ -12,6 +12,30 @@
 #Important Version Variables
 VERSION="1.0.0"
 
+spinner()
+{
+    local pid=$!
+    local delay=0.75
+    local spinstr='+-!;&'
+    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+        local temp=${spinstr#?}
+        printf " [%c]  " "$spinstr"
+        local spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
+        printf "\b\b\b\b\b\b"
+    done
+    printf "    \b\b\b\b"
+}
+echo
+	echo
+	echo "STAGE 1"
+	echo "====================================================================="
+	echo
+	echo "--------------------Webister INSTALLER $VERSION----------------------"
+	echo "-------------------------www.tecflare.com----------------------------"
+	echo "---------------------------------------------------------------------"
+	echo
+	echo
 #Show the title screen
 echo " _             __ _                 "
 echo "| |_ ___  ___ / _| | __ _ _ __ ___  "
@@ -27,27 +51,27 @@ else
     exit 1
 fi
 mysql_secure_installation
-service mysql start
+service mysql start & spinner
 echo "Enter the password for mysql please(It is usually nothing):"
 
 read PASS;
-mysql -u root -p"$PASS" -e "CREATE DATABASE webister;"
-php install.php $PASS
-id -u webister &>/dev/null || useradd webister 
-mkdir -p /var/webister
-sudo chmod +x interface/execute
+mysql -u root -p"$PASS" -e "CREATE DATABASE webister;" & spinner
+php install.php $PASS & spinner
+id -u webister &>/dev/null || useradd webister & spinner
+mkdir -p /var/webister & spinner
+sudo chmod +x interface/execute & spinner
 
-cp -r interface /var/webister/interface
-cp files/service /etc/init.d/webister
-chmod +x /etc/init.d/webister
-cp python/server.py /var/webister
-cp files/command /usr/bin/webister
-sudo chmod +x /usr/bin/webister
-service mysql start
-sudo adduser webister sudo
-usermod -aG sudo  webister
-cp -R website /var/webister/8080
-chmod -R 777 /var/webister/8080/
+cp -r interface /var/webister/interface & spinner
+cp files/service /etc/init.d/webister & spinner
+chmod +x /etc/init.d/webister & spinner
+cp python/server.py /var/webister & spinner
+cp files/command /usr/bin/webister & spinner
+sudo chmod +x /usr/bin/webister & spinner
+service mysql start & spinner
+sudo adduser webister sudo & spinner
+usermod -aG sudo  webister & spinner
+cp -R website /var/webister/8080 & spinner
+chmod -R 777 /var/webister/8080/ & spinner
 
 
 if service webister start; then
@@ -58,3 +82,21 @@ else
 fi
 
 echo "The installation is now complete."
+echo -e "###############################################################################"
+
+echo "Your system has installed Webister $VERSION"
+echo "The system has detected which has been installed (This may not be correct)"
+check () {
+   if [ -n "$(command -v "$1")" ]; then
+echo -e "$1: OK"
+else
+echo -e "$1: Not Installed, you may have issues."
+fi
+}
+check php
+check mysql
+echo "The Ip for your server Detected was $(wget -qO- http://ipecho.net/plain)"
+echo "The default username and password is admin"
+echo "Visit the control panel at port 8081."
+echo -e "###############################################################################"
+echo -e "###############################################################################"
