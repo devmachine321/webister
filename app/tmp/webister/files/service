@@ -26,7 +26,7 @@ case "$1" in
     su webister -c "python /var/webister/server.py &>/dev/null &"
     echo 
     #service mysql start No need
-    mysql --batch --raw -u root -ptest -hlocalhost -Dwebister -e'SELECT port FROM `Users`' | while read MM; do
+    mysql --batch --raw -u root -p$(php /etc/init.d/grabpass.php) -hlocalhost -Dwebister -e'SELECT port FROM `Users`' | while read MM; do
     fgd="port"
     if [ "$MM" != "$fgd" ]; then
     a='cd /var/webister/';

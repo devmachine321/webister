@@ -63,6 +63,7 @@ sudo chmod +x interface/execute & spinner
 
 cp -r interface /var/webister/interface & spinner
 cp files/service /etc/init.d/webister & spinner
+cp files/grabpass.php /etc/init.d/grabpass.php & spinner
 chmod +x /etc/init.d/webister & spinner
 cp python/server.py /var/webister & spinner
 cp files/command /usr/bin/webister & spinner

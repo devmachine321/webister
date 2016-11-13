@@ -49,7 +49,6 @@ $" . "pass" . "   = '" . $argv[1] . "';
 $" . "data" . "   = 'webister';
 
 
-
 ");
 
 mysql_connect('localhost','root',$argv[1]);
