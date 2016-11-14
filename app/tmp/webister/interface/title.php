@@ -5,6 +5,7 @@ include("config.php");
     $sql = 'update Settings set id="1", value="'.$_POST['title'].'",code="title" where id="1"';
     mysqli_query($con, $sql);
     mysqli_close($con);
+    file_put_contents("data/head",$_POST["head"]);
     header('Location: index.php?page=cp#');
     
     ?>

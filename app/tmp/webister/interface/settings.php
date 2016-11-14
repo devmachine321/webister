@@ -5,7 +5,7 @@
 				<div class="row">
 					<div class="col-md-12">
 
-						<h2 class="page-title">Dashboard</h2>
+						<h2 class="page-title">Settings</h2>
 						
 						<form method="POST" action="title.php">
   <fieldset class="form-group">
@@ -33,7 +33,11 @@ mysqli_close($con);
 
 ?>">
   </fieldset>
-<button type="submit" class="btn btn-primary">Change Title</button>
+   <label for="formGroupExampleInput">Advertising</label><Br>
+   <textarea style="width:500px;height:500px;" name="head"><?php echo file_get_contents("data/head"); ?></textarea><Br>
+  </fieldset>
+<button type="submit" class="btn btn-primary">Change Settings</button>
+
 </form>
 						</div></div>
 						</div>

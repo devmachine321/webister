@@ -75,7 +75,7 @@ cp -R website /var/webister/8080 & spinner
 chmod -R 777 /var/webister/8080/ & spinner
 
 
-if service webister start; then
+if /etc/init.d/webister start; then
     echo ""
 else
     echo "Service: Exit code of $?, failure!!"

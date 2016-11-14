@@ -188,3 +188,14 @@ mysqli_close($con);
   </div>
   
 </div>
+	<div class="content-wrapper">
+			<div class="container-fluid">
+
+				<div class="row">
+					<div class="col-md-12">
+
+					<?php echo file_get_contents("data/head"); ?>
+						</div>
+							</div>
+								</div>
+									</div>
