@@ -1,0 +1,103 @@
+#!/bin/bash
+#title           :build
+#description     :This script will compile the code and create the files
+#author		       :dodiaraculus17
+#date            :20161101
+#version         :0.1    
+#usage		       :./build or sudo ./build
+#notes           :
+#bash_version    :4.1.5(1)-release
+#==============================================================================
+
+#Important Version Variables
+VERSION="1.0.0"
+
+spinner()
+{
+    local pid=$!
+    local delay=0.75
+    local spinstr='+-!;&'
+    while [ "$(ps a | awk '{print $1}' | grep $pid)" ]; do
+        local temp=${spinstr#?}
+        printf " [%c]  " "$spinstr"
+        local spinstr=$temp${spinstr%"$temp"}
+        sleep $delay
+        printf "\b\b\b\b\b\b"
+    done
+    printf "    \b\b\b\b"
+}
+echo
+	echo
+	echo "STAGE 1"
+	echo "====================================================================="
+	echo
+	echo "--------------------Webister INSTALLER $VERSION----------------------"
+	echo "-------------------------www.tecflare.com----------------------------"
+	echo "---------------------------------------------------------------------"
+	echo
+	echo
+#Show the title screen
+echo " _             __ _                 "
+echo "| |_ ___  ___ / _| | __ _ _ __ ___  "
+echo "| __/ _ \/ __| |_| |/ __ | ___/ _ \ "
+echo "| ||  __/ (__|  _| | (_| | | |  __/ "
+echo "\__\___|\___|_| |_|\__,_|_|  \___|  "
+echo "You are installing tecflare webister version $VERSION"
+
+if python build.py; then
+   echo ""
+else
+    echo "Exit code of $?, failure!!"
+    exit 1
+fi
+service mysql start & spinner
+mysql_secure_installation
+echo "Enter the password for mysql please(It is usually nothing):"
+
+read PASS;
+mysql -u root -p"$PASS" -e "CREATE DATABASE webister;" & spinner
+php install.php $PASS & spinner
+id -u webister &>/dev/null || useradd webister & spinner
+mkdir -p /var/webister & spinner
+sudo chmod +x interface/execute & spinner
+
+cp -r interface /var/webister/interface & spinner
+cp files/service /etc/init.d/webister & spinner
+cp files/grabpass.php /etc/init.d/grabpass.php & spinner
+chmod +x /etc/init.d/webister & spinner
+cp python/server.py /var/webister & spinner
+cp files/command /usr/bin/webister & spinner
+sudo chmod +x /usr/bin/webister & spinner
+service mysql start & spinner
+sudo adduser webister sudo & spinner
+usermod -aG sudo  webister & spinner
+cp -R website /var/webister/8080 & spinner
+chmod -R 777 /var/webister/8080/ & spinner
+
+
+if /etc/init.d/webister start; then
+    echo ""
+else
+    echo "Service: Exit code of $?, failure!!"
+    exit 1
+fi
+
+echo "The installation is now complete."
+echo -e "###############################################################################"
+
+echo "Your system has installed Webister $VERSION"
+echo "The system has detected which has been installed (This may not be correct)"
+check () {
+   if [ -n "$(command -v "$1")" ]; then
+echo -e "$1: OK"
+else
+echo -e "$1: Not Installed, you may have issues."
+fi
+}
+check php
+check mysql
+echo "The Ip for your server Detected was $(wget -qO- http://ipecho.net/plain)"
+echo "The default username and password is admin"
+echo "Visit the control panel at port 8081."
+echo -e "###############################################################################"
+echo -e "###############################################################################"
