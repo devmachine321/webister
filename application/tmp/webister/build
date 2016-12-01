@@ -43,7 +43,40 @@ echo "| __/ _ \/ __| |_| |/ __ | ___/ _ \ "
 echo "| ||  __/ (__|  _| | (_| | | |  __/ "
 echo "\__\___|\___|_| |_|\__,_|_|  \___|  "
 echo "You are installing tecflare webister version $VERSION"
+echo "Validating Random Website Test..."
+# Feel Free to add your website below
 
+websites[0]="http://www.google.com"
+websites[1]="http://www.cpanel.net"
+websites[2]="http://www.github.com"
+websites[3]="http://www.quizlet.com"
+websites[4]="http://www.wikipedia.com"
+random=$(( ( RANDOM % 4 )  + 0 ))
+website=${websites[$random]}
+random=$(( ( RANDOM % 4 )  + 0 ))
+website_one=${websites[$random]}
+random=$(( ( RANDOM % 4 )  + 0 ))
+website_two=${websites[$random]}
+if curl --output /dev/null --silent --head --fail "$website"; then
+  printf '%s\n' "$website is ok"
+else
+  printf '%s\n' "$website did not pass"
+  exit 1;
+fi
+if curl --output /dev/null --silent --head --fail "$website_one"; then
+  printf '%s\n' "$website_one is ok"
+else
+  printf '%s\n' "$website_one did not pass"
+  exit 1;
+fi
+if curl --output /dev/null --silent --head --fail "$website_two"; then
+  printf '%s\n' "$website_two is ok"
+else
+  printf '%s\n' "$website_two did not pass"
+  exit 1;
+fi
+fqdn=""
+echo -e "Validation Complete"
 if python build.py; then
    echo ""
 else
