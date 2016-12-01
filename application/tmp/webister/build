@@ -83,6 +83,13 @@ else
     echo "Exit code of $?, failure!!"
     exit 1
 fi
+echo "Checking for other web hosting control panels..."
+if [ -e /usr/local/cpanel ] || [ -e /usr/local/directadmin ] || [ -e /usr/local/solusvm/www ] || [ -e /usr/local/home/admispconfig ] || [ -e /usr/local/lxlabs/kloxo ] ; then
+    echo -e "It appears that a control panel is already installed on your server"
+    echo -e "This may create issues with the installer, CONTINUING..."
+    
+fi
+echo -e "Clean OS Detected"
 service mysql start & spinner
 mysql_secure_installation
 echo "Enter the password for mysql please(It is usually nothing):"
