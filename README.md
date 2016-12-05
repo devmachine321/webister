@@ -1,6 +1,8 @@
 
 # webister
 webister is a python, php, c++, and more project.
+
+The windows version is [here](https://github.com/alwaysontop617/windows-webister)
 =======
 # Webister
 View the project page by [clicking here](http://alwaysontop617.github.io/webister).
