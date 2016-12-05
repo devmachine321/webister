@@ -44,7 +44,7 @@ if (!isset($_SESSION["user"])) {
 
 <body>
 	<div class="brand clearfix">
-		<a href="index.php?page=cp" class="logo"><h7>Webister on <b><?php
+		<a href="index.php?page=cp" class="logo"><img src="img/webister.png"><h7>Webister on <b><?php
 include("config.php");
     $mysqli = new mysqli();
     $con = mysqli_connect("$host", "$user", "$pass", "$data");

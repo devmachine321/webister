@@ -40,29 +40,9 @@
 		<div class="form-content">
 			<div class="container">
 				<div class="row">
+				
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold text-light mt-4x">Sign in to <?php
-include("config.php");
-    $mysqli = new mysqli();
-    $con = mysqli_connect("$host", "$user", "$pass", "$data");
-// Check connection
-
-    $sql = "SELECT value FROM Settings WHERE code =  'title' LIMIT 0 , 30";
-
-if ($result=mysqli_query($con,$sql))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {
-    printf ($row[0]);
-    }
-  // Free result set
-  mysqli_free_result($result);
-}
-
-mysqli_close($con);
-
-?></h1>
+						<h1 class="text-center text-bold text-light mt-4x">Sign in to <img src="img/webister.png"></h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 								<form action="index.php?page=val" class="mt" method="POST">
