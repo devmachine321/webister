@@ -6,6 +6,7 @@ include("config.php");
     mysqli_query($con, $sql);
     mysqli_close($con);
     file_put_contents("data/head",$_POST["head"]);
+    file_put_contents("data/logo",$_POST["logos"]);
     header('Location: index.php?page=cp#');
     
     ?>

@@ -42,7 +42,7 @@
 				<div class="row">
 				
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold text-light mt-4x">Sign in to <img src="img/webister.png"></h1>
+						<h1 class="text-center text-bold text-light mt-4x">Sign in to <img src="<?php echo file_get_contents("data/logo");?>"></h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 								<form action="index.php?page=val" class="mt" method="POST">

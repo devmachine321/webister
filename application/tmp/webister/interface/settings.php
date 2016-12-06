@@ -33,6 +33,10 @@ mysqli_close($con);
 
 ?>">
   </fieldset>
+  <fieldset class="form-group">
+    <label for="formGroupExampleInput">Logo</label>
+    <input type="text" class="form-control" name="logos" id="formGroupExampleInput" value="<?php echo file_get_contents("data/logo");?>">
+  </fieldset>
    <label for="formGroupExampleInput">Advertising</label><Br>
    <textarea style="width:500px;height:500px;" name="head"><?php echo file_get_contents("data/head"); ?></textarea><Br>
   </fieldset>
