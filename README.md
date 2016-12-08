@@ -6,8 +6,13 @@ The windows version is [here](https://github.com/alwaysontop617/windows-webister
 =======
 # Webister
 View the project page by [clicking here](http://alwaysontop617.github.io/webister).
+
 Vew the demo by [clicking here](http://tecflaretest.000webhostapp.com/).
+
 View the frontend demo by [clicking here](http://tecflaretest.000webhostapp.com/gen.php?id=729bb07354cfd99083a34ccd5438f3457eba7752).
+
+Help support the project by [clicking here](https://bitpay.com/cart/add?itemId=PWtU8hC819FXpVCJxntc3C)
+
 ## About Webister
 
   - Free
