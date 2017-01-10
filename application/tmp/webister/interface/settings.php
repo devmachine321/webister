@@ -10,7 +10,7 @@
 						<form method="POST" action="title.php">
   <fieldset class="form-group">
     <label for="formGroupExampleInput">Title</label>
-    <input type="text" class="form-control" name="title" id="formGroupExampleInput" placeholder="<?php
+    <input type="text" class="form-control" name="title" id="formGroupExampleInput" value="<?php
 include("config.php");
     $mysqli = new mysqli();
     $con = mysqli_connect("$host", "$user", "$pass", "$data");
@@ -39,6 +39,14 @@ mysqli_close($con);
   </fieldset>
    <label for="formGroupExampleInput">Advertising</label><Br>
    <textarea style="width:500px;height:500px;" name="head"><?php echo file_get_contents("data/head"); ?></textarea><Br>
+  </fieldset>
+   </fieldset>
+   <label for="formGroupExampleInput">Header for Login</label><Br>
+   <textarea style="width:500px;height:500px;" name="loginh"><?php echo file_get_contents("data/loginhead"); ?></textarea><Br>
+  </fieldset>
+    </fieldset>
+   <label for="formGroupExampleInput">Footer for Login</label><Br>
+   <textarea style="width:500px;height:500px;" name="loginf"><?php echo file_get_contents("data/loginfoot"); ?></textarea><Br>
   </fieldset>
 <button type="submit" class="btn btn-primary">Change Settings</button>
 

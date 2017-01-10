@@ -7,6 +7,8 @@ include("config.php");
     mysqli_close($con);
     file_put_contents("data/head",$_POST["head"]);
     file_put_contents("data/logo",$_POST["logos"]);
+    file_put_contents("data/loginhead",$_POST["loginh"]);
+    file_put_contents("data/loginfoot",$_POST["loginf"]);
     header('Location: index.php?page=cp#');
     
     ?>

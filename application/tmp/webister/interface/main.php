@@ -1,14 +1,4 @@
-<!doctype html>
-<html lang="en" class="no-js">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<title>Tecflare Webister</title>
+<?php echo file_get_contents("data/loginhead"); ?>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -32,9 +22,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.css">
-</head>
 
-<body>
 	
 	<div class="login-page bk-img">
 		<div class="form-content">
@@ -83,7 +71,4 @@
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
-
-</body>
-
-</html>
+<?php echo file_get_contents("data/loginfoot"); ?>
