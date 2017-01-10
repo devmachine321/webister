@@ -37,11 +37,15 @@ echo
 	echo
 	echo
 #Show the title screen
-echo " _             __ _                 "
-echo "| |_ ___  ___ / _| | __ _ _ __ ___  "
-echo "| __/ _ \/ __| |_| |/ __ | ___/ _ \ "
-echo "| ||  __/ (__|  _| | (_| | | |  __/ "
-echo "\__\___|\___|_| |_|\__,_|_|  \___|  "
+echo "       d8888     888                888                       "
+echo "      d88888     888                888                       "
+echo "     d88P888     888                888                       "
+echo "    d88P 888 .d88888 8888b.  .d8888b888 8888b. 888d888 .d88b. "
+echo "   d88P  888d88  888     88bd88P    888      88b888P  d8P  Y8b"
+echo "  d88P   888888  888.d888888888     888.d888888888    88888888"
+echo " d8888888888Y88b 888888  888Y88b.   888888  888888    Y8b.    "
+echo " d88P     888  Y88888 Y888888  Y8888P888 Y888888888      Y8888"
+
 echo "You are installing tecflare webister version $VERSION"
 echo "Validating Random Website Test..."
 # Feel Free to add your website below

@@ -1,24 +1,17 @@
 /**
- * elFinder translation template
- * use this file to create new translation
- * submit new translation via https://github.com/Studio-42/elFinder/issues
- * or make a pull request
- */
-
-/**
- * XXXXX translation
- * @author Translator Name <translator@email.tld>
- * @version 201x-xx-xx
+ * English translation
+ * @author Troex Nevelin <troex@fury.scancode.ru>
+ * @version 2016-03-25
  */
 if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object') {
-	elFinder.prototype.i18.REPLACE_WITH_xx_OR_xx_YY_LANG_CODE = {
-		translator : 'Translator name &lt;translator@email.tld&gt;',
-		language   : 'Language of translation in your language',
+	elFinder.prototype.i18.en = {
+		translator : 'Troex Nevelin &lt;troex@fury.scancode.ru&gt;',
+		language   : 'English',
 		direction  : 'ltr',
-		dateFormat : 'd.m.Y H:i', // Mar 13, 2012 05:27 PM
-		fancyDateFormat : '$1 H:i', // will produce smth like: Today 12:25 PM
+		dateFormat : 'M d, Y h:i A', // Mar 13, 2012 05:27 PM
+		fancyDateFormat : '$1 h:i A', // will produce smth like: Today 12:25 PM
 		messages   : {
-			
+
 			/********************************** errors **********************************/
 			'error'                : 'Error',
 			'errUnknown'           : 'Unknown error.',
@@ -121,7 +114,7 @@ if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object'
 			'cmdhome'      : 'Home',
 			'cmdinfo'      : 'Get info',
 			'cmdmkdir'     : 'New folder',
-			'cmdmkdirin'   : 'Into new folder', // from v2.1.7 added 19.2.2016
+			'cmdmkdirin'   : 'Into New Folder', // from v2.1.7 added 19.2.2016
 			'cmdmkfile'    : 'New text file',
 			'cmdopen'      : 'Open',
 			'cmdpaste'     : 'Paste',
@@ -140,7 +133,7 @@ if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object'
 			'cmdplaces'    : 'To Places', // added 28.12.2014
 			'cmdchmod'     : 'Change mode', // from v2.1 added 20.6.2015
 			'cmdopendir'   : 'Open a folder', // from v2.1 added 13.1.2016
-			
+
 			/*********************************** buttons ***********************************/
 			'btnClose'  : 'Close',
 			'btnSave'   : 'Save',
@@ -160,7 +153,7 @@ if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object'
 			'btnFileName':'Filename',  // from v2.1 added 22.5.2015
 			'btnSaveClose': 'Save & Close', // from v2.1 added 12.6.2015
 			'btnBackup' : 'Backup', // fromv2.1 added 28.11.2015
-			
+
 			/******************************** notifications ********************************/
 			'ntfopen'     : 'Open folder',
 			'ntffile'     : 'Open file',
@@ -189,7 +182,7 @@ if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object'
 			'ntfchmod'    : 'Changing file mode', // from v2.1 added 20.6.2015
 			'ntfpreupload': 'Verifying upload file name', // from v2.1 added 31.11.2015
 			'ntfzipdl'    : 'Creating a file for download', // from v2.1.7 added 23.1.2016
-			
+
 			/************************************ dates **********************************/
 			'dateUnknown' : 'unknown',
 			'Today'       : 'Today',
@@ -285,7 +278,7 @@ if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object'
 			'about'           : 'About',
 			'shortcuts'       : 'Shortcuts',
 			'help'            : 'Help',
-			'webfm'           : 'Web file manager',
+			'webfm'           : 'Web file manager for Webister',
 			'ver'             : 'Version',
 			'protocolver'     : 'protocol version',
 			'homepage'        : 'Project home',
@@ -326,7 +319,7 @@ if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object'
 			'pass'                : 'Password', // added 18.04.2012
 			'confirmUnmount'      : 'Are you unmount $1?',  // from v2.1 added 30.04.2012
 			'dropFilesBrowser': 'Drop or Paste files from browser', // from v2.1 added 30.05.2012
-			'dropPasteFiles'  : 'Drop or Paste files and URLs here', // from v2.1 added 07.04.2014
+			'dropPasteFiles'  : 'Drop or Paste files here', // from v2.1 added 07.04.2014
 			'encoding'        : 'Encoding', // from v2.1 added 19.12.2014
 			'locale'          : 'Locale',   // from v2.1 added 19.12.2014
 			'searchTarget'    : 'Target: $1',                // from v2.1 added 22.5.2015

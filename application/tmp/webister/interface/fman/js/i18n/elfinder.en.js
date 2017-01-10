@@ -278,7 +278,7 @@ if (elFinder && elFinder.prototype && typeof(elFinder.prototype.i18) == 'object'
 			'about'           : 'About',
 			'shortcuts'       : 'Shortcuts',
 			'help'            : 'Help',
-			'webfm'           : 'Web file manager',
+			'webfm'           : 'Web file manager for Webister',
 			'ver'             : 'Version',
 			'protocolver'     : 'protocol version',
 			'homepage'        : 'Project home',
