@@ -71,8 +71,8 @@ $opts = array(
 			'driver'        => 'LocalFileSystem',           // driver for accessing file system (REQUIRED)
 			'path'          => '/var/webister/' . $user,                 // path to files (REQUIRED)
 			'URL'           => dirname($_SERVER['PHP_SELF']) . '/', // URL to files (REQUIRED)
-			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
-			'uploadAllow'   => array('image', 'text/plain'),// Mimetype `image` and `text/plain` allowed to upload
+			'uploadDeny'    => array(''),                // All Mimetypes not allowed to upload
+			'uploadAllow'   => array('all'),// Mimetype `image` and `text/plain` allowed to upload
 			'uploadOrder'   => array('allow', 'allow'),      // allowed Mimetype `image` and `text/plain` only
 			'accessControl' => 'access'                     // disable and hide dot starting files (OPTIONAL)
 		)
