@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION["planid"])) die("Error Forbidden");
+error_reporting(0);
+if (!isset($_SESSION["planid"]) && !isset($_GET["planid"])) die("Error Forbidden");
 ?>
 <!doctype html>
 <html lang="en" class="no-js">
@@ -116,7 +117,12 @@ mysql_query("GRANT ALL ON $username.* TO '$username'@'localhost'");
 mysql_close();
 }
 include ("data/plans/" . $_POST["plan"]);
+if (isset($_GET["planid"])) {
+	newserv(rand("1000","9999"),$_GET["planid"],$_GET["username"],$_GET["password"]);
+	die();
+} else {
 newserv(rand($pstart,$pend),$disk,$_POST["username"],$_POST["password"]);
+}
 echo "Your Server was created login to control panel now.<br>";
 session_destroy();
 }
