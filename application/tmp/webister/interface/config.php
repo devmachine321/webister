@@ -1,6 +1,6 @@
 <?php
 $host="localhost";
 $user="root";
-$pass="test";
+$pass="root";
 $data = "webister";
 ?>
