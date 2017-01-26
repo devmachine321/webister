@@ -100,7 +100,7 @@ echo "Enter the password for mysql please(It is usually nothing):"
 
 read PASS;
 mysql -u root -p"$PASS" -e "CREATE DATABASE webister;" & spinner
-php install.php $PASS & spinner
+
 id -u webister &>/dev/null || useradd webister & spinner
 mkdir -p /var/webister & spinner
 sudo chmod +x interface/execute & spinner
@@ -117,7 +117,7 @@ sudo adduser webister sudo & spinner
 usermod -aG sudo  webister & spinner
 cp -R website /var/webister/8080 & spinner
 chmod -R 777 /var/webister/8080/ & spinner
-
+php install.php $PASS & spinner
 
 if /etc/init.d/webister start; then
     echo ""
