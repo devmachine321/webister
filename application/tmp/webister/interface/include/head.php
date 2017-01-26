@@ -1,11 +1,54 @@
 <?php
-
 session_start();
+include("config.php");
 if (!isset($_SESSION["user"])) {
 	header("Location: index.php?page=main");
 	die();
 }
+     function Connect($port) {
+        $serverConn = @stream_socket_client("tcp://127.0.0.1:$port", $errno, $errstr);
+        if ($errstr != '') {
+            return false;
+        }
+       fclose($serverConn);
+       return true;
+      } 
+ function GetDirectorySize($path){
+    $bytestotal = 0;
+    $path = realpath($path);
+    if($path!==false){
+        foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
+            $bytestotal += $object->getSize();
+        }
+    }
+    
+    return $bytestotal;
+}
+
+$con = mysqli_connect($host, $user, $pass, $data);
+$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
+$result = mysqli_query($con, $sql);
+ while ($row = mysqli_fetch_row($result)) {
+  
+     $quote = $row[4];
+     if ($quote == "") {
+     	$quote="99999999999999999999999999999999";
+ }
+ }
+   mysqli_free_result($result);
+    mysqli_close($con);
 ?>
+<?php
+$con = mysqli_connect($host, $user, $pass, $data);
+$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
+$result = mysqli_query($con, $sql);
+ while ($row = mysqli_fetch_row($result)) {
+     echo $row[5];
+     $myp = $row[5];
+ }
+   mysqli_free_result($result);
+    mysqli_close($con);
+    ?>
 <!doctype html>
 <html lang="en" class="no-js">
 
@@ -101,26 +144,7 @@ mysqli_close($con);
 	<div class="ts-main-content">
 		<nav class="ts-sidebar">
 			<ul class="ts-sidebar-menu">
-			<?php if ($_SESSION["user"] == "admin") { ?>
-				<li class="ts-label">Administration</li>
-			
-				<li><a href="#"><i class="fa fa-server"></i> Servers</a>
-					<ul>
-						<li><a href="newserv.php">New</a></li>
-						<li><a href="index.php?page=list#">List</a></li>
-				
-					</ul>
-				</li>
-				
-				<li><a href="settings.php"><i class="fa fa-tasks"></i> Settings</a></li>
-			<li class="ts-label">API</li>
-			
-				<li><a href="plans.php"> Plans</a></li>
-				</li>
-				
-				
-<?php } ?>
-	<li class="ts-label"><?php echo $_SESSION["user"]; ?>'s settings</li>
+				<li class="ts-label"><?php echo $_SESSION["user"]; ?>'s settings</li>
 		<li class="open"><a href="index.php?page=cp"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 		<li><a href="#"><i class="fa fa-server"></i> My Server</a>
 					<ul>
@@ -141,10 +165,75 @@ mysqli_close($con);
 								<li><a  href="" data-toggle="modal" data-target="#myModal">My Account</a></li>
 						
 							<li><a href="logout.php">Logout</a></li>
+							 
 						</ul>
+
 					</li>
 				</ul>
+			<?php if ($_SESSION["user"] == "admin") { ?>
+				<li class="ts-label">Administration</li>
+			<li><a href="newserv.php"><i class="fa fa-plus"></i> New</a></li>
+				<li><a href="#"><i class="fa fa-server"></i> Servers</a>
+					<ul>
+						<li><a href="newserv.php">New</a></li>
+						<li><a href="index.php?page=list#">List</a></li>
+				
+					</ul>
+				</li>
+				
+				<li><a href="settings.php"><i class="fa fa-tasks"></i> Settings</a></li>
+			<li class="ts-label">API</li>
+			
+				<li><a href="plans.php"> Plans</a></li>
+				</li>
+				
+				
+<?php } ?>
 
+						<li class="ts-label">Status of Server</li>
+			 <li><a>Hostname: <span class="badge"><?php echo gethostname(); ?>:<?php
+$con = mysqli_connect($host, $user, $pass, $data);
+$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
+$result = mysqli_query($con, $sql);
+ while ($row = mysqli_fetch_row($result)) {
+     echo $row[5];
+ }
+   mysqli_free_result($result);
+    mysqli_close($con);
+    ?></span></a></li>
+			 <li><a>IP Address: <span class="badge"><?php echo gethostbyname(gethostname()); ?>:<?php
+$con = mysqli_connect($host, $user, $pass, $data);
+$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
+$result = mysqli_query($con, $sql);
+ while ($row = mysqli_fetch_row($result)) {
+     echo $row[5];
+     $mm = $row[5];
+ }
+   mysqli_free_result($result);
+    mysqli_close($con);
+    ?></a></li>
+			<li><a>MySQL Hostname: <span class="badge">localhost</span></a></li>
+   <li><a>MySQL Username: <span class="badge"><?php echo $_SESSION["user"]; ?></span></a></li>
+   <li><a>MySQL Password: <span class="badge">Same as CP</span></a></li>
+   <li><a>Database: <span class="badge"><?php echo $_SESSION["user"]; ?></span></a></li>
+   <li><a>Status: <span class="badge">
+       <?php
+ 
+
+
+     if (Connect($mm)){
+         echo "Server is running!";
+       }else{
+         echo "Server is down";
+       
+    }
+    ?> </span></a></li>
+    <li><a>	Disk Space (<?php echo bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2); ?>/<?php echo $quote; ?>):<div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2); ?>"
+  aria-valuemin="0" aria-valuemax="<?php echo $quote; ?>" style="width:<?php echo bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2); ?>%">
+    <span class="sr-only"><?php echo bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2); ?>% Complete</span>
+  </div>
+</div></a></li>
 			</ul>
 		</nav>
 							<div class="container">

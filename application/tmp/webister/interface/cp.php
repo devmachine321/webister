@@ -1,29 +1,5 @@
 <?php include("include/head.php"); 
-
-$con = mysqli_connect($host, $user, $pass, $data);
-$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
-$result = mysqli_query($con, $sql);
- while ($row = mysqli_fetch_row($result)) {
-  
-     $quote = $row[4];
-     if ($quote == "") {
-     	$quote="99999999999999999999999999999999";
- }
- }
-   mysqli_free_result($result);
-    mysqli_close($con);
-
-?><?php
-$con = mysqli_connect($host, $user, $pass, $data);
-$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
-$result = mysqli_query($con, $sql);
- while ($row = mysqli_fetch_row($result)) {
-     echo $row[5];
-     $myp = $row[5];
- }
-   mysqli_free_result($result);
-    mysqli_close($con);
-    ?>
+?>
 		<div class="content-wrapper">
 			<div class="container-fluid">
 
@@ -148,104 +124,12 @@ $result = mysqli_query($con, $sql);
 							</div>
 						    <div class="col-md-6">
 						    			<div class="panel panel-default">
-									<div class="panel-heading">Status</div>
+									<div class="panel-heading">Server</div>
 									<div class="panel-body">
-										<?php
- function GetDirectorySize($path){
-    $bytestotal = 0;
-    $path = realpath($path);
-    if($path!==false){
-        foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
-            $bytestotal += $object->getSize();
-        }
-    }
-    
-    return $bytestotal;
-}
-echo "You are using a total of " . bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2) . "MB.<Br>";
- if (bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2) > $quote || bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2) == $quote)
- {
- 	echo "Over Quota Cleared Data<br>";
- $dir = "/var/webister/" . $myp;
-$it = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
-$files = new RecursiveIteratorIterator($it,
-             RecursiveIteratorIterator::CHILD_FIRST);
-foreach($files as $file) {
-    if ($file->isDir()){
-        rmdir($file->getRealPath());
-    } else {
-        unlink($file->getRealPath());
-    }
-}
-rmdir($dir);
-mkdir("/var/webister/" . $myp);
-$quotapage = "<" . "html" . "><" . "head>" . "<title" . ">" . "Over Quota</" . "title>" . "<" . "body>" . "<h1" . ">" . "Webister Over Quota Reached</h1" . ">" . "<p" . ">" . "Please contact your webhost for more details</p" . "></" . "body></" . "html>";
-file_put_contents("/var/webister/" . $myp . "/index.php",$quotapage);
- }
-?>
-									
-										Disk Space (<?php echo bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2); ?>/<?php echo $quote; ?>):<div class="progress">
-  <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2); ?>"
-  aria-valuemin="0" aria-valuemax="<?php echo $quote; ?>" style="width:<?php echo bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2); ?>%">
-    <span class="sr-only"><?php echo bcdiv(GetDirectorySize("/var/webister/" . $myp), 1048576, 2); ?>% Complete</span>
-  </div>
-</div>
-
-Hostname: <span class="badge"><?php echo gethostname(); ?>:<?php
-$con = mysqli_connect($host, $user, $pass, $data);
-$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
-$result = mysqli_query($con, $sql);
- while ($row = mysqli_fetch_row($result)) {
-     echo $row[5];
- }
-   mysqli_free_result($result);
-    mysqli_close($con);
-    ?></span><Br>
-IP Address: <span class="badge"><?php echo gethostbyname(gethostname()); ?>:<?php
-$con = mysqli_connect($host, $user, $pass, $data);
-$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
-$result = mysqli_query($con, $sql);
- while ($row = mysqli_fetch_row($result)) {
-     echo $row[5];
-     $mm = $row[5];
- }
-   mysqli_free_result($result);
-    mysqli_close($con);
-    ?></span><Br>
-    Location: <span class="badge">/var/webister/<?php
-$con = mysqli_connect($host, $user, $pass, $data);
-$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
-$result = mysqli_query($con, $sql);
- while ($row = mysqli_fetch_row($result)) {
-     echo $row[5];
- }
-   mysqli_free_result($result);
-    mysqli_close($con);
-    ?></span><Br>
-      MySQL Hostname: <span class="badge">localhost</span><br>
-      MySQL Username: <span class="badge"><?php echo $_SESSION["user"]; ?></span><Br>
-      MySQL Password: <span class="badge">Same as CP</span><br>
-      Database: <span class="badge"><?php echo $_SESSION["user"]; ?></span>
-      <br><span class="badge">
-       <?php
-     function Connect($port) {
-        $serverConn = @stream_socket_client("tcp://127.0.0.1:$port", $errno, $errstr);
-        if ($errstr != '') {
-            return false;
-        }
-       fclose($serverConn);
-       return true;
-      } 
-
-
-
-     if (Connect($mm)){
-         echo "Server is running!";
-       }else{
-         echo "Server is down";
-       
-    }
-    ?> </span>
+										
+										<a type="button" href="FileManager.php" class="btn btn-default"><i class="fa fa-5x fa-file"></i></a>
+										<a type="button" href="adminer-4.2.4.php?server=localhost" class="btn btn-default"><i class="fa fa-5x fa-database"></i></a>
+										<a type="button" href="wp.php" class="btn btn-default"><i class="fa fa-5x fa-wordpress"></i></a>
 
 										
 										</div>
@@ -254,7 +138,8 @@ $result = mysqli_query($con, $sql);
 										</div>
 									</div>
 						    </div>
-							<div class="col-md-6">
+						    <div class="row">
+							<div class="col-md-12">
 								<div class="panel panel-default">
 									<div class="panel-heading">Recent Failed Login Attempts</div>
 									<div class="panel-body">
@@ -290,20 +175,16 @@ if ($result=mysqli_query($con,$sql))
 											</tbody>
 										</table>
 									</div>
+							
 								</div>
 								
 							</div>
+							</div>
+									
 						</div>
 						
-						<div class="row">
-							<div class="col-md-6">
-							
-								</div>
-							</div>
-							<div class="col-md-6">
+		
 						
-								</div>
-							</div>
 						</div>
 
 					</div>
