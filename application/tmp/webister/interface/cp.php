@@ -130,7 +130,7 @@ $result = mysqli_query($con, $sql);
 										<a type="button" href="FileManager.php" class="btn btn-default"><i class="fa fa-5x fa-file"></i></a>
 										<a type="button" href="adminer-4.2.4.php?server=localhost" class="btn btn-default"><i class="fa fa-5x fa-database"></i></a>
 										<a type="button" href="wp.php" class="btn btn-default"><i class="fa fa-5x fa-wordpress"></i></a>
-
+                                        <a type="button" href="phpinfo.php" class="btn btn-default"><i class="fa fa-5x fa-code"></i></a>
 										
 										</div>
 										
