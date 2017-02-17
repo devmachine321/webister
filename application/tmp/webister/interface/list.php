@@ -37,7 +37,4 @@ $result = mysqli_query($con, $sql);
   </div>
   </div>
   </div>
-			
-			
-			
-			sudo make install
+<?php include("include/footer.php"); ?>

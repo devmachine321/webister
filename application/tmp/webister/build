@@ -95,7 +95,11 @@ if [ -e /usr/local/cpanel ] || [ -e /usr/local/directadmin ] || [ -e /usr/local/
 fi
 echo -e "Clean OS Detected"
 service mysql start & spinner
-mysql_secure_installation
+read -p "Do you want to configure mysql? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    mysql_secure_installation
+fi
 echo "Enter the password for mysql please(It is usually nothing):"
 
 read PASS;
