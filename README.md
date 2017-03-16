@@ -7,9 +7,7 @@ The windows version is [here](https://github.com/alwaysontop617/windows-webister
 # Webister
 View the project page by [clicking here](http://alwaysontop617.github.io/webister).
 
-Vew the demo by [clicking here](http://tecflaretest.000webhostapp.com/).
-
-View the frontend demo by [clicking here](http://tecflaretest.000webhostapp.com/gen.php?id=729bb07354cfd99083a34ccd5438f3457eba7752).
+Vew the demo by [clicking here](https://www.adaclare.com/index.php/try-webister/).
 
 Help support the project by [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?token=Ea_rrJDbgtQPpP7fa1R8N_SuEQgxg2ZtaT77NZYhUJ7sZCJxxacpOionaVcz5erevcOpbG)
 
