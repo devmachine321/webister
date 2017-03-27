@@ -13,12 +13,11 @@ node {
    sh 'php php-cs-fixer self-update'
    
    stage 'check system'
-   sh 'php php-cs-fixer fix application/tmp/webister/interface/ > log.txt'
+   sh 'for f in $(find /tmp -name '*.php' -or -name '*.php'); do php php-cs-fixer fix $f; done'
    
    stage 'archive'
    archive 'master.zip'
    archive 'application.deb'
-   archive 'log.txt'
 }
 
 
