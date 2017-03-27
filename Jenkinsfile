@@ -13,7 +13,7 @@ node {
    sh 'php php-cs-fixer self-update'
    
    stage 'check system'
-   sh 'for f in $(find application/  -type f \( -iname "*.php" ! -iname "*adminer*" \)); do php php-cs-fixer fix $f; done'
+   sh 'php php-cs-fixer --dry-run --stop-on-violation fix application/'
    
    stage 'archive'
    archive 'master.zip'
