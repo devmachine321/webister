@@ -13,7 +13,7 @@ node {
    sh 'php php-cs-fixer self-update'
    
    stage 'check system'
-   sh 'php php-cs-fixer --dry-run --stop-on-violation fix application/'
+   sh 'php php-cs-fixer --dry-run --stop-on-violation fix application/tmp/webister/interface/'
    
    stage 'archive'
    archive 'master.zip'
