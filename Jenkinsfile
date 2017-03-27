@@ -6,11 +6,18 @@ node {
    stage 'build'
    sh 'echo "Compiling Packages..."';
    sh 'dpkg-deb --build application';
-   sh "wget https://github.com/alwaysontop617/webister/archive/master.zip"
-
+   sh "wget https://github.com/alwaysontop617/webister/archive/master.zip";
+   
+   stage 'check'
+   sh 'curl -L http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -o php-cs-fixer';
+   sh 'sudo chmod a+x php-cs-fixer'
+   sh 'sudo mv php-cs-fixer /usr/local/bin/php-cs-fixer'
+   sh 'php-cs-fixer fix application/tmp/webister/interface/ > log.txt'
+   
    stage 'archive'
    archive 'master.zip'
    archive 'application.deb'
+   archive 'log.txt'
 }
 
 
