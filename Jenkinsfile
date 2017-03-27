@@ -9,7 +9,8 @@ node {
    sh "wget https://github.com/alwaysontop617/webister/archive/master.zip";
    
    stage 'check'
-   sh 'php-cs-fixer fix application/tmp/webister/interface/ > log.txt'
+   sh 'wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.1.2/php-cs-fixer.phar -O php-cs-fixer'
+   sh 'php php-cs-fixer fix application/tmp/webister/interface/ > log.txt'
    
    stage 'archive'
    archive 'master.zip'
