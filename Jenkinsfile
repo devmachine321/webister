@@ -4,11 +4,13 @@
 // NOTE: sleep commands are solelely inserted for the purpose of simulating long running tasks when you run the pipeline
 node {
    stage 'build'
-
+   sh 'echo "Compiling Packages..."';
+   sh 'dpkg-deb --build application';
    sh "wget https://github.com/alwaysontop617/webister/archive/master.zip"
 
    stage 'archive'
    archive 'master.zip'
+   archive 'application.deb'
 }
 
 
