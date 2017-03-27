@@ -8,9 +8,11 @@ node {
    sh 'dpkg-deb --build application';
    sh "wget https://github.com/alwaysontop617/webister/archive/master.zip";
    
-   stage 'check'
+   stage 'check pre-requirements'
    sh 'wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.1.2/php-cs-fixer.phar -O php-cs-fixer'
    sh 'php php-cs-fixer self-update'
+   
+   stage 'check system'
    sh 'php php-cs-fixer fix application/tmp/webister/interface/ > log.txt'
    
    stage 'archive'
