@@ -14,8 +14,9 @@ node {
    
    stage 'check system'
    parallel 'check': {
-     //sh 'php php-cs-fixer --dry-run --diff fix application/tmp/webister/interface/'
+     sh 'php php-cs-fixer --dry-run --diff fix application/tmp/webister/interface/'
    }
+   
    stage 'archive'
    archive 'master.zip'
    archive 'application.deb'
