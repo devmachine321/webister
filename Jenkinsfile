@@ -1,6 +1,5 @@
 node {
    stage 'build'
-   sh 'git clone https://github.com/alwaysontop617/webister.git'
    sh 'cd webister'
    sh 'echo "Compiling Packages..."';
    sh 'dpkg-deb --build application';
