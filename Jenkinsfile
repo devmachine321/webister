@@ -11,7 +11,7 @@ node {
    stage 'req'
    sh 'wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.1.2/php-cs-fixer.phar -O php-cs-fixer'
    parallel 'test': {
-   sh 'php php-cs-fixer --dry-run --diff fix application/tmp/webister/interface/ && exit 0'
+   sh 'php php-cs-fixer --dry-run fix application/tmp/webister/interface/'
    }
    
    stage 'archive'
