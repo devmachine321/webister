@@ -1,4 +1,6 @@
 <?php
+
+
 error_reporting(0);
 $DBServer = 'localhost';
 $DBUser   = 'root';
