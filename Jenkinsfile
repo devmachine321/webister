@@ -1,7 +1,3 @@
-// see https://dzone.com/refcardz/continuous-delivery-with-jenkins-workflow for tutorial
-// see https://documentation.cloudbees.com/docs/cookbook/_pipeline_dsl_keywords.html for dsl reference
-// This Jenkinsfile should simulate a minimal Jenkins pipeline and can serve as a starting point.
-// NOTE: sleep commands are solelely inserted for the purpose of simulating long running tasks when you run the pipeline
 node {
    stage 'build'
    sh 'echo "Compiling Packages..."';
@@ -15,10 +11,14 @@ node {
    sh 'sh test.sh > log.txt'
    }
    
+   stage 'md5'
+   sh 'md5sum master.zip application.deb log.txt > md5.txt'
+   
    stage 'archive'
    archive 'master.zip'
    archive 'application.deb'
    archive 'log.txt'
+   archive 'md5.txt'
 }
 
 
