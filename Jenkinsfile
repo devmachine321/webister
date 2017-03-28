@@ -1,6 +1,5 @@
 node {
    stage 'build'
-   sh 'cd webister'
    sh 'echo "Compiling Packages..."';
    sh 'dpkg-deb --build application';
    sh "wget https://github.com/alwaysontop617/webister/archive/master.zip";
