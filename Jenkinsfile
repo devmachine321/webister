@@ -1,7 +1,7 @@
 node {
    stage 'build'
    sh 'rm -rf webister && git clone https://github.com/alwaysontop617/webister.git'
-   sh 'cd webister && cp * ../'
+   sh 'cd webister && cp -R * ../'
    sh 'echo "Compiling Packages..."';
    sh 'dpkg-deb --build application';
    sh "wget https://github.com/alwaysontop617/webister/archive/master.zip";
