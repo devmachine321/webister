@@ -2,6 +2,8 @@
 # webister
 webister is a python, php, c++, and more project.
 
+[![Build Status](http://www.adaclare.com:8080/job/Webister%20Development/job/webister/job/master/badge/icon)](http://www.adaclare.com:8080/job/Webister%20Development/job/webister/job/master/)
+
 The windows version is [here](https://github.com/alwaysontop617/windows-webister)
 =======
 # Webister
