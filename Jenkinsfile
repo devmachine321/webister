@@ -10,6 +10,8 @@ node {
    parallel 'test': {
    sh 'wget https://raw.githubusercontent.com/alwaysontop617/webister/master/test.sh'
    sh 'sh test.sh > log.txt'
+   sh 'curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar'
+   sh 'php phpcs.phar -l application/tmp/webister/interface/'
    }
    
    stage 'md5'
