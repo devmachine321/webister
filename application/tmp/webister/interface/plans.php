@@ -1,4 +1,4 @@
-<?php include("include/head.php"); ?>
+<?php include 'include/head.php'; ?>
 	<div class="content-wrapper">
 			<div class="container-fluid">
 
@@ -7,16 +7,16 @@
 
 						<h2 class="page-title">Plans</h2>
 						<?php 
-						if (isset($_GET["yes"])) {
-							$file = "<" . "?php ";
-							$file = $file . "$" . "name='" . $_POST["title"] . "'" . "; ";
-							$file = $file . "$" . "disk='" . $_POST["disk"] . "'" . "; ";
-							$file = $file . "$" . "pstart='" . $_POST["pstart"] . "'" . "; ";
-							$file = $file . "$" . "pend='" . $_POST["pend"] . "'" . "; ";
-							$file = $file . "$" . "cost='" . $_POST["cost"] . "'" . "; ";
-							file_put_contents("data/plans/" . $_POST["title"] . ".php",$file);
-						}
-						?>
+                        if (isset($_GET['yes'])) {
+                            $file = '<'.'?php ';
+                            $file = $file.'$'."name='".$_POST['title']."'".'; ';
+                            $file = $file.'$'."disk='".$_POST['disk']."'".'; ';
+                            $file = $file.'$'."pstart='".$_POST['pstart']."'".'; ';
+                            $file = $file.'$'."pend='".$_POST['pend']."'".'; ';
+                            $file = $file.'$'."cost='".$_POST['cost']."'".'; ';
+                            file_put_contents('data/plans/'.$_POST['title'].'.php', $file);
+                        }
+                        ?>
 												<form method="POST" action="?yes">
   <fieldset class="form-group">
     <label for="formGroupExampleInput">Name</label>
@@ -53,16 +53,14 @@
     </thead>
     <tbody>
 	<?php
-	$dir = scandir("data/plans");
-	foreach ($dir as $file) {
-		if ($file == "." || $file == "..") {
-			
-		} else {
-			include("data/plans/" . $file);
-			if (!file_exists("data/" . sha1(md5($name)) . ".php")) {
-			file_put_contents("data/" .sha1(md5($name)) . ".php","<" . "?" . "php" . " " . "$" . "suppose" . "=" . "'" . $name . "';" . "?" . ">");
-			}
-			?>
+    $dir = scandir('data/plans');
+    foreach ($dir as $file) {
+        if ($file == '.' || $file == '..') {
+        } else {
+            include 'data/plans/'.$file;
+            if (!file_exists('data/'.sha1(md5($name)).'.php')) {
+                file_put_contents('data/'.sha1(md5($name)).'.php', '<'.'?'.'php'.' '.'$'.'suppose'.'='."'".$name."';".'?'.'>');
+            } ?>
 			  <tr>
         <td><?php echo $name; ?></td>
         <td><?php echo $disk; ?></td>
@@ -72,7 +70,8 @@
 		<td><?php echo sha1(md5($name)); ?></td>
       </tr>
 			<?php
-		}
-	}
-	?>
-<?php include("include/footer.php"); ?>
+
+        }
+    }
+    ?>
+<?php include 'include/footer.php'; ?>

@@ -1,18 +1,16 @@
 <?php
 
-/**
- * py-serv-client.php
+/*
+ * Adaclare Technologies
  *
- * This is very import. Can Execute commands with this server.
+ * Webister Hosting Software
  *
- * @category   Important
- * @package    Webister
- * @author     Tecflare
- * @copyright  2016 Tecflare
+ *
  */
-function sendmessage($arg) {
-$output = shell_exec('./execute ' . $arg);
-return $output;
-}
 
-?>
+function sendmessage($arg)
+{
+    $output = shell_exec('./execute '.$arg);
+
+    return $output;
+}

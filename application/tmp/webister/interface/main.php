@@ -1,4 +1,4 @@
-<?php echo file_get_contents("data/loginhead"); ?>
+<?php echo file_get_contents('data/loginhead'); ?>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -29,7 +29,7 @@
      
    </Style>
    <div id="page-wrap">
-<h1>Sign in to <img src="<?php echo file_get_contents("data/logo");?>"></h1>
+<h1>Sign in to <img src="<?php echo file_get_contents('data/logo'); ?>"></h1>
   <div class="row">
                   <div class="col-xs-6">
                       <div class="well">
@@ -44,8 +44,10 @@
                                   <input type="password" class="form-control" id="password" name="pass" value="" required="" title="Please enter your password">
                                   <span class="help-block"></span>
                               </div>
-                              <?php if (isset($_GET["error"])) {?>
-                              <div id="loginErrorMsg" class="alert alert-danger">Wrong username or password</div><?php } ?>
+                              <?php if (isset($_GET['error'])) {
+    ?>
+                              <div id="loginErrorMsg" class="alert alert-danger">Wrong username or password</div><?php 
+} ?>
                      
                               <button type="submit" class="btn btn-success btn-block">Login</button>
                               <a href="adminer-4.2.4.php" class="btn btn-default btn-block">SQL Manager</a>
@@ -75,4 +77,4 @@
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
-<?php echo file_get_contents("data/loginfoot"); ?>
+<?php echo file_get_contents('data/loginfoot'); ?>

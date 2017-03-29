@@ -1,49 +1,50 @@
 <?php
 session_start();
-include("config.php");
-if (!isset($_SESSION["user"])) {
-	header("Location: index.php?page=main");
-	die();
+include 'config.php';
+if (!isset($_SESSION['user'])) {
+    header('Location: index.php?page=main');
+    die();
 }
-     function Connect($port) {
-        $serverConn = @stream_socket_client("tcp://127.0.0.1:$port", $errno, $errstr);
-        if ($errstr != '') {
-            return false;
-        }
-       fclose($serverConn);
-       return true;
-      } 
- function GetDirectorySize($path){
-    $bytestotal = 0;
-    $path = realpath($path);
-    if($path!==false){
-        foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
-            $bytestotal += $object->getSize();
-        }
-    }
-    
-    return $bytestotal;
-}
+     function Connect($port)
+     {
+         $serverConn = @stream_socket_client("tcp://127.0.0.1:$port", $errno, $errstr);
+         if ($errstr != '') {
+             return false;
+         }
+         fclose($serverConn);
+
+         return true;
+     }
+ function GetDirectorySize($path)
+ {
+     $bytestotal = 0;
+     $path = realpath($path);
+     if ($path !== false) {
+         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object) {
+             $bytestotal += $object->getSize();
+         }
+     }
+
+     return $bytestotal;
+ }
 
 $con = mysqli_connect($host, $user, $pass, $data);
-$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
+$sql = 'SELECT * FROM Users WHERE username = "'.$_SESSION['user'].'"';
 $result = mysqli_query($con, $sql);
  while ($row = mysqli_fetch_row($result)) {
-  
      $quote = $row[4];
-     if ($quote == "") {
-     	$quote="99999999999999999999999999999999";
- }
+     if ($quote == '') {
+         $quote = '99999999999999999999999999999999';
+     }
  }
    mysqli_free_result($result);
     mysqli_close($con);
 ?>
 <?php
 $con = mysqli_connect($host, $user, $pass, $data);
-$sql = 'SELECT * FROM Users WHERE username = "' . $_SESSION["user"] . '"';
+$sql = 'SELECT * FROM Users WHERE username = "'.$_SESSION['user'].'"';
 $result = mysqli_query($con, $sql);
  while ($row = mysqli_fetch_row($result)) {
- 
      $myp = $row[5];
  }
    mysqli_free_result($result);
@@ -85,18 +86,16 @@ $result = mysqli_query($con, $sql);
         <span class="icon-bar"></span>
       </button>
       	<a href="index.php?page=cp" class="navbar-brand">Webister on <b><?php
-include("config.php");
+include 'config.php';
     $mysqli = new mysqli();
     $con = mysqli_connect("$host", "$user", "$pass", "$data");
 // Check connection
     $sql = "SELECT value FROM Settings WHERE code =  'title' LIMIT 0 , 30";
-if ($result=mysqli_query($con,$sql))
-  {
-  // Fetch one and one row
-  while ($row=mysqli_fetch_row($result))
-    {
-    printf ($row[0]);
-    }
+if ($result = mysqli_query($con, $sql)) {
+    // Fetch one and one row
+  while ($row = mysqli_fetch_row($result)) {
+      printf($row[0]);
+  }
   // Free result set
   mysqli_free_result($result);
 }
@@ -127,7 +126,7 @@ mysqli_close($con);
         <div class="modal-body">
              <form class="form-horizontal" role="form">
                   <div class="form-group">
-                  	<input type="hidden" name="username" value="<?php echo $_SESSION["user"] ?>">
+                  	<input type="hidden" name="username" value="<?php echo $_SESSION['user'] ?>">
                     <label  class="col-sm-2 control-label"
                               for="inputEmail3">Password</label>
                     <div class="col-sm-10">
