@@ -22,6 +22,3 @@ node {
    archive 'log.txt'
    archive 'md5.txt'
 }
-
-
-
