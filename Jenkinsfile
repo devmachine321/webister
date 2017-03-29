@@ -26,3 +26,4 @@ node {
    stage 'clean'
    sh 'rm -rf *'
 }
+
