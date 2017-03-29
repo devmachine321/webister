@@ -15,7 +15,7 @@ node {
    }
    
    stage 'md5'
-   sh 'md5sum application.deb log.txt > md5.txt'
+   sh 'md5sum * > md5.txt'
    
    stage 'archive'
    archive 'application.deb'
