@@ -9,9 +9,9 @@ node {
    sh 'wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/download/v2.1.2/php-cs-fixer.phar -O php-cs-fixer'
    parallel 'test': {
    sh 'wget https://raw.githubusercontent.com/alwaysontop617/webister/master/test.sh'
-   sh 'sh test.sh > log.txt'
+   sh 'sh test.sh > log-test.txt'
    sh 'curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar'
-   sh 'php phpcs.phar -n -p -l -v application/tmp/webister/interface/ > log.txt || :'
+   sh 'php phpcs.phar -n -p -l -v application/tmp/webister/interface/ > log-style.txt || :'
    }
    
    stage 'md5'
@@ -19,6 +19,10 @@ node {
    
    stage 'archive'
    archive 'application.deb'
-   archive 'log.txt'
+   archive 'log-test.txt'
+   archive 'log-style.txt'
    archive 'md5.txt'
+   
+   stage 'clean'
+   sh 'rm -rf *'
 }
