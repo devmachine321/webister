@@ -1,10 +1,10 @@
 <?php 
-session_Start();
-if (!isset($_SESSION["user"])) {
-	header("Location: index.php?page=main");
-	die();
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: index.php?page=main');
+    die();
 }
-echo file_get_contents("data/loginhead"); 
+echo file_get_contents('data/loginhead');
 ?>
 
 	<!-- Font awesome -->
@@ -37,13 +37,13 @@ echo file_get_contents("data/loginhead");
 				<div class="row">
 				
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold text-light mt-4x"><img src="<?php echo file_get_contents("data/logo");?>"></h1>
+						<h1 class="text-center text-bold text-light mt-4x"><img src="<?php echo file_get_contents('data/logo'); ?>"></h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 								<form action="pass.php" class="mt" method="POST">
 									<label for="" class="text-uppercase text-sm">New Password</label>
 									<input type="password" placeholder="Password" class="form-control mb" name="password">
- 	<input type="hidden" name="username" value="<?php echo $_SESSION["user"]; ?>">
+ 	<input type="hidden" name="username" value="<?php echo $_SESSION['user']; ?>">
 								
 									<button class="btn btn-primary btn-block" type="submit">Set PASSWORD</button>
 
@@ -69,4 +69,4 @@ echo file_get_contents("data/loginhead");
 	<script src="js/fileinput.js"></script>
 	<script src="js/chartData.js"></script>
 	<script src="js/main.js"></script>
-<?php echo file_get_contents("data/loginfoot"); ?>
+<?php echo file_get_contents('data/loginfoot'); ?>

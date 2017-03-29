@@ -1,4 +1,4 @@
-<?php include("include/head.php"); ?>
+<?php include 'include/head.php'; ?>
 	<div class="content-wrapper">
 			<div class="container-fluid">
 
@@ -18,13 +18,11 @@
     </thead>
     <tbody>
 	<?php
-	$dir = scandir("data/transactions");
-	foreach ($dir as $file) {
-		if ($file == "." || $file == "..") {
-			
-		} else {
-			include("data/transactions/" . $file);
-			?>
+    $dir = scandir('data/transactions');
+    foreach ($dir as $file) {
+        if ($file == '.' || $file == '..') {
+        } else {
+            include 'data/transactions/'.$file; ?>
 			  <tr>
         <td><?php echo $username; ?></td>
         <td><?php echo $date; ?></td>
@@ -33,7 +31,8 @@
 		<td><?php echo $mail; ?></td>
       </tr>
 			<?php
-		}
-	}
-	?>
-<?php include("include/footer.php"); ?>
+
+        }
+    }
+    ?>
+<?php include 'include/footer.php'; ?>

@@ -1,3 +1,11 @@
 <?php
-$suppose = "dodia";
-?>
+
+/*
+ * Adaclare Technologies
+ *
+ * Webister Hosting Software
+ *
+ *
+ */
+
+$suppose = 'dodia';
