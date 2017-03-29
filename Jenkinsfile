@@ -11,7 +11,7 @@ node {
    sh 'wget https://raw.githubusercontent.com/alwaysontop617/webister/master/test.sh'
    sh 'sh test.sh > logtest.txt'
    sh 'curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar'
-   sh 'php phpcs.phar -n -p -l -v application/tmp/webister/interface/ > logstyle.txt || :'
+   sh 'php phpcs.phar --ignore=*adminer* --encoding=utf-8 --severity=3 --extensions=php -n -p -l -v application/tmp/webister/interface/ > logstyle.txt || :'
    }
    
    stage 'md5'
